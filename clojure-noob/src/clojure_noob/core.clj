@@ -26,16 +26,33 @@
   (println (str "Other choices: " (clojure.string/join ", " others))))
 
 (defn announce-treasure-location
+  "Map destructuring"
   [{lat :lat lng :lng}]
   (println (str "Treasure lat: " lat))
   (println (str "Treasure lng: " lng)))
 
 (defn announce-gun-ratio
+  "Map destructuring"
   [{:keys [guns butter]}]
   (println (str "Guns: " guns))
   (println (str "Butter: " butter))
   (println (str "Ratio guns/butter: " (/ guns butter))))
 
+(defn special-sum
+  "Example anonymous function with rest"
+  [& args]
+  (apply #(apply + %&) args))
+
+(defn print-special-sum
+  (let [ls [1 2 3 4 5]]
+    (println
+     (str
+      "Sum of "
+      (clojure.string/join ", " ls)
+      ": "
+      (apply special-sum ls)))
+    )
+  )
 
 (defn -main
   "I don't do a whole lot ... yet."
