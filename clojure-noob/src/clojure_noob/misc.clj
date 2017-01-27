@@ -56,3 +56,11 @@
   "Returning function"
   [n]
   #(+ % n))
+
+(defn print-list
+  "destructuring with let"
+  [ls]
+  (if (nil? ls) nil
+      (let [[e & others] ls]
+        (println e)
+        (print-list others))))
