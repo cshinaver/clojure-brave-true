@@ -1,5 +1,7 @@
 (ns clojure-noob.core
-  (:use [clojure-noob misc hobbit])
+  (:use
+   [clojure-noob misc hobbit]
+   clojure-noob.ch3.exercises)
   (:gen-class))
 
 (defn -main
@@ -13,3 +15,4 @@
   (announce-gun-ratio {:butter 50 :guns 2})
   (print-special-sum)
   (println (better-symmetrize-body-parts asym-hobbit-body-parts)))
+
