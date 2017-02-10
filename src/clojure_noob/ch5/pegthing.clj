@@ -246,3 +246,9 @@
     (if-let [new-board (make-move board (first input) (second input))]
       (user-entered-valid-move new-board)
       (user-entered-invalid-move board))))
+
+(defn play-game
+  "Plays peg game"
+  [rows]
+  (prompt-move
+   (prompt-empty-peg (new-board rows))))
