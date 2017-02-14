@@ -27,3 +27,31 @@
 (read-string "@var")
 (read-string "; ignore!\n(+ 1 2)")
 
+; Clojure symbol resolution
+; Special form, local binding, namespace mapping, or exception
+(if true :a :b)
+(let [x 5]
+  (+ x 3))
+(def x 5)
+
+(defmacro ignore-last-operand
+  [function-call]
+  (butlast function-call))
+
+(ignore-last-operand (+ 1 2 (println "derpin")))
+
+(defmacro infix
+  [infix-list]
+  (list (second infix-list) (first infix-list) (last infix-list)))
+
+(macroexpand '(infix (1 + 2)))
+
+(defn read-resource
+  "Read a resource into a string"
+  [path]
+  (-> path
+      clojure.java.io/resource
+      slurp
+      read-string))
+
+(read-resource "suspects.csv")
